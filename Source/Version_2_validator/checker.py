@@ -249,96 +249,7 @@ class Checker():
 
 
 
-    def merge_list_noeuds_predesseur(self,listNodeSuc,n3,listArcSuc):
-        cmp=0
-        listContientlistSucp = []
-        for nodeP in listNodeSuc:
-            listSucp = []
-            for decal in range(0, int(listArcSuc[cmp].len)):
-                listSucp.append('0')
-            print("Type is "+str(type(nodeP)))
-            listSucp.extend(nodeP.lEvac)
-            print("List prepared1 as    " + str(listSucp))
-            cmp += 1
-            listContientlistSucp.append(listSucp)
-        print("List Contient list  length    " + str(len(listContientlistSucp)))
-        print("List Contient list  is    " + str(listContientlistSucp))
-
-        listSucp3 = []
-        if (int(len(listContientlistSucp))==1):
-            listSucp3.extend(listContientlistSucp[0])
-        elif(int(len(listContientlistSucp))==2):
-            for i in range(0, max(len(listContientlistSucp[0]), len(listContientlistSucp[1]))):
-                if i < min(len(listContientlistSucp[0]), len(listContientlistSucp[1])):
-                    print('22'+ "  and i is "+str(i))
-                    listSucp3.append(str(int(listContientlistSucp[0][i]) + int(listContientlistSucp[1][i])))
-                elif len(listContientlistSucp[0]) < len(listContientlistSucp[1]):
-                    print('33')
-                    listSucp3.append(listContientlistSucp[1][i])
-                else:
-                    print('4444')
-                    listSucp3.append(listContientlistSucp[0][i])
-        else:
-            for j in range (0,len(listContientlistSucp)-2):
-                for i in range(0, max(len(listContientlistSucp[j]), len(listContientlistSucp[j+1]))):
-                    if i < min(len(listContientlistSucp[j]), len(listContientlistSucp[j+1])):
-                        print('22'+ "  and i is "+str(i))
-                        listSucp3.append(str(int(listContientlistSucp[j][i]) + int(listContientlistSucp[j+1][i])))
-                    elif len(listContientlistSucp[j]) < len(listContientlistSucp[j+1]):
-                        print('33')
-                        listSucp3.append(listContientlistSucp[j+1][i])
-                    else:
-                        print('4444')
-                        listSucp3.append(listContientlistSucp[j][i])
-
-
-        self.re_inserer(n3, (listSucp3))
-        print("Node pere id is --  " + str(n3.nid) + "  -- Mise a jour pere noeud! Son liste is  " + str(listSucp3))
-
-
-
-
-
-
-
-        # listSucp = []
-        # for decal in range (0,int(arc1.len)):
-        #     listSucp.append('0')
-        # listSucp.extend(n1.lEvac)
-        # print("List prepared1 as    "+str(listSucp))
-        # listSucp2 = []
-        # for decal2 in range (0,int(arc2.len)):
-        #     listSucp2.append('0')
-        # listSucp2.extend(n2.lEvac)
-        # print("List prepared2 as    " + str(listSucp2))
-        #listSucp3 = []
-        # for i in range (0,max(len(listSucp),len(listSucp2))):
-        #     if i<min(len(listSucp),len(listSucp2)) :
-        #         listSucp3.append(str(int(listSucp[i])+int(listSucp2[i])))
-        #     elif len(listSucp)<len(listSucp2):
-        #         listSucp3.append(listSucp2[i])
-        #     else:
-        #         listSucp3.append(listSucp[i])
-        # self.re_inserer(n3, (listSucp3))
-        # print("n3 id is --"+str(n3.nid)+ "-- Mise a jour 3eme noeud! Son liste is  "+str(listSucp3))
-
-
-    def parcour_recurssif(self,finishnode,parser,escapes_routes,content_nodes_evac):
-        #Condition d'arret
-        self.create_debut_list(content_nodes_evac)
-
-        listArcSuc = self.find_arc_predesseur_Graphe(finishnode, parser, escapes_routes)
-        listNodeSuc = self.find_node_predesseur_Graphe(listArcSuc)
-        self.merge_list_noeuds_predesseur(listNodeSuc, finishnode, listArcSuc)
-        for nodeFils in listNodeSuc:
-            if nodeFils.stgnode == True :
-                print("*************************************ATTEINTDRE LE BORD***********************************")
-                print("*************************************ATTEINTDRE LE BORD***********************************")
-
-            self.parcour_recurssif(nodeFils, parser, escapes_routes,content_nodes_evac)
-
-
-
+   
 
 
 
@@ -375,28 +286,6 @@ def main():
 
     node_list.clear();
     node_list.extend(listInter)
-
-
-
-
-
-    # print('Evacuation information')
-    # for info in content_evac_info:
-    #     print(str(info))
-    #
-    # print()
-    # print('Arc information')
-    # for info2 in content_graph:
-    #     print(str(info2))
-    #
-    # print()
-    # print('Solution_evac_info')
-    # for info3 in content_nodes_evac:
-    #     print(str(info3))
-
-
-
-
 
 
     #############################################
